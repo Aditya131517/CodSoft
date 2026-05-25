@@ -5,19 +5,16 @@ import os
 
 FILE_NAME = "tasks.json"
 
-# Load tasks
 def load_tasks():
     if os.path.exists(FILE_NAME):
         with open(FILE_NAME, "r") as file:
             return json.load(file)
     return []
-
-# Save tasks
+    
 def save_tasks():
     with open(FILE_NAME, "w") as file:
         json.dump(tasks, file)
 
-# Refresh list display
 def refresh_list():
     task_list.delete(0, tk.END)
 
@@ -29,7 +26,6 @@ def refresh_list():
 
         task_list.insert(tk.END, text)
 
-# Add task
 def add_task():
     task = entry.get().strip()
 
@@ -49,7 +45,6 @@ def add_task():
             "Task cannot be empty!"
         )
 
-# Delete task
 def delete_task():
     try:
         index = task_list.curselection()[0]
@@ -64,8 +59,7 @@ def delete_task():
             "Warning",
             "Select a task first!"
         )
-
-# Mark complete
+]
 def complete_task():
     try:
         index = task_list.curselection()[0]
@@ -81,7 +75,6 @@ def complete_task():
             "Select a task first!"
         )
 
-# Update task
 def update_task():
     try:
         index = task_list.curselection()[0]
@@ -108,7 +101,6 @@ def update_task():
             "Select a task!"
         )
 
-# Main window
 root = tk.Tk()
 root.title("To-Do List App")
 root.geometry("450x500")
